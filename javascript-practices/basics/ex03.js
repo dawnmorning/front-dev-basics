@@ -13,11 +13,11 @@ console.log(myVar1 === myVar3);     // false: 타입비교+값비교
 
 console.log("===================================");
 // == : equality, 값의 동치성, 형변환
-console.log('4' == 4);
-console.log(false == 0);
-console.log('abc' == new String('abc'));
+console.log('4' == 4);  // true
+console.log(false == 0); // true
+console.log('abc' == new String('abc')); // true
 
-console.log(true + 10);                 // 11 
+console.log(true + 10);                 // 11
 console.log('abc' + new String('abc')); // abcabc
 console.log(1 + '11');                  // 111
 console.log('11' + 1);                  // 111
