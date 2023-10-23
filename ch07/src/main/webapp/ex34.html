@@ -17,14 +17,18 @@
 			"펭귄:Penguins.jpg",
 			"툴립:Tulips.jpg"
 		];
-
-		var changeImage = function () {
-			// 랜덤 변수 
+		var calIndex = function () {
 			var index = Math.floor(Math.random() * images.length);
 			var info = images[index].split(":");
-			var imageName = info[1]
+			return {index: index, info: info}; 
+		}
+
+		var changeImage = function () {
+			var result = calIndex(); 
+			var info = result.info; 
+			var imageName = info[1]; 
 			$('.image-viewer img').attr('src', '/ch07/images/' + imageName);
-			console.log(info);
+			console.log(info[1]);
 		}
 
 		var slideShow;
@@ -32,7 +36,7 @@
 		var startSlideShow = function () {
 			slideShow = setInterval(function () {
 				changeImage();
-			}, 2000); 
+			}, 2000);
 		};
 
 		var stopSlideShow = function () {
@@ -48,7 +52,7 @@
 				var $this = $(this);
 				if ($this.text() === '슬라이드쇼 시작') {
 					startSlideShow();
-					$this.text('슬라이드쇼 정지'); 
+					$this.text('슬라이드쇼 정지');
 				} else {
 					stopSlideShow();
 					$this.text('슬라이드쇼 시작');
