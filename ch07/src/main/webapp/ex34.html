@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>sample1</title>
-<link href='image-viewer.css' type='text/css' rel="stylesheet"/>
-<script type="text/javascript" src="./jquery/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="image-viewer.js"></script>
-<script>
-	imageViewer.init();
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>sample1</title>
+	<link href='image-viewer.css' type='text/css' rel="stylesheet" />
+	<script type="text/javascript" src="./jquery/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		var images = [
+			"국화:Chrysanthemum.jpg",
+			"사막:Desert.jpg",
+			"수국:Hydrangeas.jpg",
+			"해파리:Jellyfish.jpg",
+			"코알라:Koala.jpg",
+			"등대:Lighthouse.jpg",
+			"펭귄:Penguins.jpg",
+			"툴립:Tulips.jpg"
+		];
+
+		var changeImage = function () {
+			// 랜덤 변수 
+			var index = Math.floor(Math.random() * images.length);
+			var info = images[index].split(":");
+			var imageName = info[1]
+			$('.image-viewer img').attr('src', '/ch07/images/' + imageName);
+			console.log(info);
+		}
+
+		var slideShow;
+
+		var startSlideShow = function () {
+			slideShow = setInterval(function () {
+				changeImage();
+			}, 2000); 
+		};
+
+		var stopSlideShow = function () {
+			clearInterval(slideShow);
+		};
+
+		$(function () {
+			$("#btn-change").click(function () {
+				changeImage();
+			});
+
+			$("#btn-slideshow").click(function () {
+				var $this = $(this);
+				if ($this.text() === '슬라이드쇼 시작') {
+					startSlideShow();
+					$this.text('슬라이드쇼 정지'); 
+				} else {
+					stopSlideShow();
+					$this.text('슬라이드쇼 시작');
+				}
+			});
+		});
+	</script>
 </head>
+
 <body>
 	<div class="image-viewer">
 		<div class="buttons">
@@ -17,8 +65,9 @@
 			<button id="btn-slideshow">슬라이드쇼 시작</button>
 		</div>
 		<div>
-			<img/>
+			<img src="/ch07/images/Desert.jpg" alt="사막" , title="사막" />
 		</div>
 	</div>
 </body>
+
 </html>
