@@ -31,5 +31,10 @@ public class ApiTestController {
 	public String json03() {
 		return "json03";
 	}
+	
+	@RequestMapping("/json04")
+	public String json04() {
+		return "json04";
+	}
 
 }
